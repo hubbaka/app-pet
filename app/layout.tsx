@@ -1,5 +1,7 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+'use client';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import { ThemeProvider } from 'next-themes';
 import 'styles/global.css';
 export default function RootLayout({
   children,
@@ -14,7 +16,13 @@ export default function RootLayout({
       */}
       <head />
 
-      <body>{children}</body>
+      <body className="dark:bg-stone-900">
+        <ThemeProvider enableSystem={true} attribute="class">
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
